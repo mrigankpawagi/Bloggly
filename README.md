@@ -1,0 +1,65 @@
+# Bloggly
+_A Profile to fulfil all your blogging needs._
+
+## Modules
+
+* metatag
+* layouter
+* background_image
+* svg_formatter
+* mailchimp
+* addtoany
+* sitemap
+* views_slideshow
+* sociallinks
+* slick
+* automated_cron
+* block
+* block_content
+* breakpoint
+* ckeditor
+* color
+* comment
+* config
+* contact
+* contextual
+* datetime
+* dblog
+* dynamic_page_cache
+* editor
+* field
+* field_ui
+* file
+* filter
+* help
+* history
+* image
+* link
+* menu_ui
+* node
+* options
+* page_cache
+* path
+* quickedit
+* rdf
+* search
+* shortcut
+* system
+* taxonomy
+* text
+* toolbar
+* tour
+* update
+* user
+* views_ui
+* menu_link_content
+* views
+* token
+
+## Themes
+
+* Nexus
+* Stable
+* Classy
+* Bartik
+* Seven
