@@ -1,0 +1,36 @@
+jscolor.picker:
+  version: 2.0.4
+  js:
+    https://cdn.jsdelivr.net/npm/jscolor-picker@2.0.4/jscolor.min.js:
+      preprocess: false,
+      minified: true,
+      attributes:
+        integrity: sha256-CJWfUCeP3jLdUMVNUll6yQx37gh9AKmXTRxvRf7jzro=
+        crossorigin: anonymous
+    js/jscolor.picker.js: {}
+  dependencies:
+    - core/drupal
+
+runtime.css:
+  version: 1.0.0
+  js:
+    js/runtime.css.js: {}
+  dependencies:
+    - core/underscore
+
+scrolling.blur:
+  version: 1.0.0
+  js:
+    js/scrolling.blur.js: {}
+  dependencies:
+    - core/domready
+    - core/drupal
+    - core/drupal.debounce
+    - core/drupalSettings
+    - background_image/runtime.css
+
+admin:
+  version: 1.0.0
+  css:
+    theme:
+      css/background_image.admin.css: {}

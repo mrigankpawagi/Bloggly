@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_lg_2x
+label: 'Background Image: Large @2x (retina)'
+effects:
+  9afb5dbb-b359-4669-896e-e49ca750c9c8:
+    uuid: 9afb5dbb-b359-4669-896e-e49ca750c9c8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2400
+      height: 1600

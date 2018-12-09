@@ -1,0 +1,23 @@
+background_image_settings:
+  type: mapping
+  mapping:
+    blur:
+      type: mapping
+      mapping:
+        type:
+          type: integer
+        radius:
+          type: integer
+        speed:
+          type: integer
+    dark:
+      type: boolean
+    full_viewport:
+      type: boolean
+    preload:
+      type: mapping
+      mapping:
+        background_color:
+          type: color_hex
+    text:
+      type: text_format

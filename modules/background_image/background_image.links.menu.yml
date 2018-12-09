@@ -1,0 +1,5 @@
+background_image.admin:
+  title: 'Background Images'
+  route_name: background_image.admin
+  description: 'Lists all background images.'
+  parent: system.admin_config_media

@@ -1,0 +1,16 @@
+sociallinks.content:
+  path: '/Social'
+  defaults:
+    _controller: '\Drupal\sociallinks\Controller\SociallinksController::content'
+    _title: 'Social Media Links'
+  requirements:
+    _permission: 'access content'
+
+sociallinks.config:
+  path: '/admin/config/Social/config'
+  defaults:
+    _form: '\Drupal\sociallinks\Form\SociallinksConfigForm'
+    _title: 'SocialLinks Configuration'
+  requirements:
+    _permission: 'administer site configuration'
+    

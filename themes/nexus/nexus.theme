@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Nexus theme.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for Page templates.
+ *
+ * Override or insert variables into the page template.
+ */
+function nexus_preprocess_page(&$variables) {
+  $variables['slideshow_display'] = theme_get_setting('slideshow_display','nexus');
+
+  $variables['slide1_head'] = theme_get_setting('slide1_head','nexus');
+  $variables['slide1_desc'] = check_markup(theme_get_setting('slide1_desc','nexus'), 'full_html');
+  $variables['slide1_url'] = theme_get_setting('slide1_url','nexus');
+  // slide1_image
+  $fid = theme_get_setting("slide1_image", "nexus");
+  if (!empty($fid)) {
+    $file = \Drupal\file\Entity\File::load($fid[0]);
+    $uri = $file->getFileUri();
+    $image_path = file_create_url($uri);
+   }
+   else {
+    $image_path = drupal_get_path('theme', 'nexus') . '/assets/images/slide-image-1.jpg';
+   }
+   $variables['slide1_image'] = $image_path;
+
+
+  $variables['slide2_head'] = theme_get_setting('slide2_head','nexus');
+  $variables['slide2_desc'] = check_markup(theme_get_setting('slide2_desc','nexus'), 'full_html');
+  $variables['slide2_url'] = theme_get_setting('slide2_url','nexus');
+  // slide2_image
+  $fid = theme_get_setting("slide2_image", "nexus");
+  if (!empty($fid)) {
+    $file = \Drupal\file\Entity\File::load($fid[0]);
+    $uri = $file->getFileUri();
+    $image_path = file_create_url($uri);
+   }
+   else {
+    $image_path = drupal_get_path('theme', 'nexus') . '/assets/images/slide-image-2.jpg';
+   }
+   $variables['slide2_image'] = $image_path;
+
+  $variables['slide3_head'] = theme_get_setting('slide3_head','nexus');
+  $variables['slide3_desc'] = check_markup(theme_get_setting('slide3_desc','nexus'), 'full_html');
+  $variables['slide3_url'] = theme_get_setting('slide3_url','nexus');
+  // slide3_image
+  $fid = theme_get_setting("slide3_image", "nexus");
+  if (!empty($fid)) {
+    $file = \Drupal\file\Entity\File::load($fid[0]);
+    $uri = $file->getFileUri();
+    $image_path = file_create_url($uri);
+   }
+   else {
+    $image_path =  drupal_get_path('theme', 'nexus') . '/assets/images/slide-image-3.jpg';
+   }
+   $variables['slide3_image'] = $image_path;
+
+  $variables['this_year']= date('Y');
+
+  $variables['preface_col'] = ( ( (bool) $variables['page']['preface_first'] + (bool) $variables['page']['preface_second'] + (bool) $variables['page']['preface_third'] ) );
+  $variables['preface_col'] = ($variables['preface_col'] > 0)
+    ? (12 / $variables['preface_col']) : 0;
+
+  $variables['footer_col'] = ( ( (bool) $variables['page']['footer_first'] + (bool) $variables['page']['footer_second'] + (bool) $variables['page']['footer_third'] + (bool) $variables['page']['footer_fourth'] ) );
+  $variables['footer_col'] = ($variables['footer_col'] > 0)
+    ? (12 / $variables['footer_col']) : 0;
+
+
+}
+
+/**
+ * Prepares variables for comment templates.
+ *
+ * Default template: comment.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the comment and entity objects.
+ *     Array keys: #comment, #commented_entity.
+ */
+function nexus_preprocess_breadcrumb(&$variables) {
+  // Set cache context as 'URL'.
+  $variables['#cache']['contexts'][] = 'url';
+
+  // Set breadcrumb.
+  if(($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']){
+    $variables['breadcrumb'][] = array(
+      'text' => $node->getTitle(),
+      'url' => $node->URL()
+   );
+  }
+}

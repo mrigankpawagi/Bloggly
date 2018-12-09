@@ -1,0 +1,17 @@
+<div style="overflow: hidden;">
+  <div style="width: 49%; float: left;">
+    <div>
+      {{ image }}
+    </div>
+    {% if caption is not empty %}
+      <p style="font-size: 0.8em;">
+        {{ caption }}
+      </p>
+    {% endif %}
+  </div>
+  <div style="width: 49%; float: right;">
+    <p>
+      {{ text }}
+    </p>
+  </div>
+</div>

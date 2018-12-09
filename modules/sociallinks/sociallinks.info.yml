@@ -1,0 +1,6 @@
+name: SocialLinks
+description: Add cool social media links on your Drupal Website!
+package: Custom
+type: module
+version: 1.0
+core: 8.x

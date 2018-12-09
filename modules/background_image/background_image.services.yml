@@ -1,0 +1,57 @@
+services:
+  background_image.manager:
+    class: Drupal\background_image\BackgroundImageManager
+    arguments: ['@config.factory', '@entity_type.bundle.info', '@entity_type.manager', '@file_system', '@image.factory', '@module_handler', '@current_route_match', '@state', '@url_generator.non_bubbling']
+
+  cache_context.background_image:
+    class: Drupal\background_image\Cache\Context\BackgroundImageCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings.blur:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsBlurCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings.blur.type:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsBlurTypeCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings.dark:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsDarkCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings.full_viewport:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsFullViewportCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  cache_context.background_image.settings.text:
+    class: Drupal\background_image\Cache\Context\BackgroundImageSettingsTextCacheContext
+    arguments: ['@background_image.manager']
+    tags:
+      - { name: cache.context }
+
+  path_processor.background_image:
+    class: Drupal\background_image\PathProcessor\PathProcessorBackgroundImage
+    arguments: ['@module_handler', '@stream_wrapper_manager']
+    tags:
+      - { name: path_processor_inbound, priority: 300 }
+
+  subscriber.background_image.stage_file_proxy:
+    class: Drupal\background_image\EventSubscriber\StageFileProxySubscriber
+    tags:
+      - { name: event_subscriber }

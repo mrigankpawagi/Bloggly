@@ -1,0 +1,11 @@
+form:
+  version: VERSION
+  css:
+    theme:
+      css/layouter.css: {}
+  js:
+    js/layouter.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings

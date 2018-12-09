@@ -1,0 +1,6 @@
+.layouter-form .one_column_width_500 label {
+  width: auto !important;
+  text-indent: 0;
+  line-height: 62px;
+  background-color: lightgray;
+}

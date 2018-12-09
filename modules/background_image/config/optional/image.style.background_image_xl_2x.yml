@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_xl_2x
+label: 'Background Image: Extra Large @2x (retina)'
+effects:
+  41af3c80-3bfb-48ca-bef3-5aeeb6e4b396:
+    uuid: 41af3c80-3bfb-48ca-bef3-5aeeb6e4b396
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 4000
+      height: 2666

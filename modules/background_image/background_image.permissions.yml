@@ -1,0 +1,15 @@
+view background image:
+  title: 'View background images'
+add background image:
+  title: 'Add a background image'
+edit background image:
+  title: 'Edit a background image'
+edit own background image:
+  title: 'Edit own background image'
+delete background image:
+  title: 'Delete a background image'
+delete own background image:
+  title: 'Delete own background image'
+administer background image:
+  title: 'Administer background images'
+  restrict access: TRUE

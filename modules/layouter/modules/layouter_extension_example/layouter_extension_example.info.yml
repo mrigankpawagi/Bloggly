@@ -1,0 +1,14 @@
+name: Layouter Extension Example
+description: Layouter template extension example module.
+
+type: module
+# core: 8.x
+
+dependencies:
+  - layouter
+
+# Information added by Drupal.org packaging script on 2016-08-02
+version: '8.x-1.0'
+core: '8.x'
+project: 'layouter'
+datestamp: 1470121447

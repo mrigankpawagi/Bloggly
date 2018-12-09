@@ -1,0 +1,4 @@
+administer mailchimp campaigns:
+  title: 'Administer Mailchimp campaigns'
+  description: 'Create and send Mailchimp campaigns.'
+  restrict access: TRUE

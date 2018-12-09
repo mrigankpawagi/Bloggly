@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_sm_2x
+label: 'Background Image: Small @2x (retina)'
+effects:
+  757f5a2d-23fd-44ce-9181-3de02d12cec8:
+    uuid: 757f5a2d-23fd-44ce-9181-3de02d12cec8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1536
+      height: 1024

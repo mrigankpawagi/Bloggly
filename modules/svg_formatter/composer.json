@@ -1,0 +1,23 @@
+{
+    "name": "drupal/svg_formatter",
+    "description": "SVG Formatter provides support for using SVG images on your website.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/svg_formatter",
+    "authors": [
+        {
+            "name": "Goran Nikolovski",
+            "email": "nikolovski84@gmail.com",
+            "homepage": "http://gorannikolovski.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://www.drupal.org/node/add/project-issue/svg_formatter",
+        "email": "nikolovski84@gmail.com"
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "require": {
+        "enshrined/svg-sanitize": "^0.8.2"
+    }
+}

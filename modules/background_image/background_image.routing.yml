@@ -1,0 +1,66 @@
+route_callbacks:
+  - '\Drupal\background_image\Routing\BackgroundImageRoutes::routes'
+
+background_image.admin:
+  path: '/admin/config/media/background_image'
+  defaults:
+    _entity_list: 'background_image'
+    _title: 'Background Images'
+  requirements:
+    _permission: 'administer background image'
+
+background_image.settings:
+  path: '/admin/config/media/background_image/settings'
+  defaults:
+    _form: '\Drupal\background_image\Form\BackgroundImageSettingsForm'
+    _title: 'Background Image Settings'
+  requirements:
+    _permission: 'administer background image'
+
+entity.background_image.add_form:
+  path: '/admin/config/media/background_image/add'
+  defaults:
+    _entity_form: background_image.add
+    _title: 'Add Background Image'
+  requirements:
+    _entity_create_access: 'background_image'
+  options:
+    _node_operation_route: TRUE
+
+entity.background_image.canonical:
+  path: '/admin/config/media/background_image/{background_image}/edit'
+  defaults:
+    _entity_form: background_image.edit
+    _title: 'Edit Background Image'
+  requirements:
+    _entity_access: 'background_image.edit'
+  options:
+    _node_operation_route: TRUE
+
+entity.background_image.edit_form:
+  path: '/admin/config/media/background_image/{background_image}/edit'
+  defaults:
+    _entity_form: background_image.edit
+    _title: 'Edit Background Image'
+  requirements:
+    _entity_access: 'background_image.edit'
+  options:
+    _node_operation_route: TRUE
+
+entity.background_image.delete_form:
+  path: '/admin/config/media/background_image/{background_image}/delete'
+  defaults:
+    _entity_form: background_image.delete
+    _title: 'Delete Background Image'
+  requirements:
+    _entity_access: 'background_image.delete'
+  options:
+    _node_operation_route: TRUE
+
+entity.background_image.collection:
+  path: '/admin/config/media/background_image'
+  defaults:
+    _entity_list: 'background_image'
+    _title: 'Background Images'
+  requirements:
+    _permission: 'administer background image'

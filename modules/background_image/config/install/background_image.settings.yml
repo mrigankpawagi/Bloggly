@@ -1,0 +1,53 @@
+defaults:
+  blur:
+    type: 2
+    radius: 50
+    speed: 1
+  dark: false
+  full_viewport: false
+  preload:
+    background_color: '#ffffff'
+  text:
+    format: full_html
+    value: ''
+
+entities:
+  node:
+    article:
+      enable: true
+      embed: true
+      require: false
+      group: advanced
+    page:
+      enable: true
+      embed: true
+      require: false
+      group: advanced
+  user:
+    user:
+      enable: true
+      embed: true
+      require: false
+      group: advanced
+  view:
+    view:
+      enable: true
+      embed: true
+      require: false
+      group: advanced
+
+# @todo Make configurable in \Drupal\background_image\Form\BackgroundImageSettingsForm.
+css:
+  base_class: 'background-image'
+  retina_rules:
+    - 'only screen and (-webkit-min-device-pixel-ratio:2)'
+    - 'only screen and (min--moz-device-pixel-ratio:2)'
+    - 'only screen and (-o-min-device-pixel-ratio:2/1)'
+    - 'only screen and (min-device-pixel-ratio:2)'
+    - 'only screen and (min-resolution: 192dpi)'
+    - 'only screen and (min-resolution: 2dppx)'
+
+image_style:
+  preload: background_image_preload
+  fallback: background_image_lg
+  responsive: background_image

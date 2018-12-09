@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_preload
+label: 'Background Image: Preload'
+effects:
+  57cd3d8d-4198-4eca-ac07-d1c12ffeb0e8:
+    uuid: 57cd3d8d-4198-4eca-ac07-d1c12ffeb0e8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 100
+      height: 67

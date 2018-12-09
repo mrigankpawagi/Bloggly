@@ -1,0 +1,9 @@
+background_image.admin:
+  title: 'Background Images'
+  route_name: background_image.admin
+  base_route: system.admin_config_media
+
+background_image.settings:
+  title: 'Settings'
+  route_name: background_image.settings
+  base_route: system.admin_config_media

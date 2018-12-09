@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Contains hook implementations.
+ *
+ * @see hook_form_alter().
+ * @see hook_layouter_templates_info().
+ * @see hook_theme().
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function layouter_extension_example_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'layouter_multistep_form') {
+    $form['#attached']['library'][] = 'layouter_extension_example/css';
+  }
+}
+
+/**
+ * Implements hook_layouter_templates_info().
+ */
+function layouter_extension_example_layouter_templates_info() {
+  $templates = [
+    'one_column_width_500' => [
+      'title' => t('Single column of text 500px wide'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+          'title' => t('Your text'),
+          'description' => t('This text will be 500px wide.'),
+        ],
+      ],
+      'theme' => 'layouter_extension_example_one_column_width_500',
+    ],
+  ];
+
+  return $templates;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function layouter_extension_example_theme($existing, $type, $theme, $path) {
+  return [
+    'layouter_extension_example_one_column_width_500' => [
+      'variables' => ['text' => NULL],
+      'template' => 'one_column_width_500',
+    ],
+  ];
+}

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_md_2x
+label: 'Background Image: Medium @2x (retina)'
+effects:
+  d460d1c2-1ac2-4bff-9b76-e66b3abb8332:
+    uuid: d460d1c2-1ac2-4bff-9b76-e66b3abb8332
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1984
+      height: 1322

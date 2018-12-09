@@ -1,0 +1,41 @@
+{
+  "name": "background_image",
+  "description": "Drupal module.",
+  "license": "GPL-2.0",
+  "private": true,
+  "devDependencies": {
+    "babel-core": "6.24.1",
+    "babel-plugin-add-header-comment": "1.0.3",
+    "babel-preset-env": "1.4.0",
+    "chalk": "^1.1.3",
+    "chokidar": "1.6.1",
+    "cross-env": "^4.0.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.3",
+    "glob": "7.1.1",
+    "minimist": "^1.2.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "ie >= 9",
+              "edge >= 13",
+              "firefox >= 5",
+              "opera >= 12",
+              "safari >= 5",
+              "chrome >= 56"
+            ]
+          }
+        }
+      ]
+    ]
+  }
+}

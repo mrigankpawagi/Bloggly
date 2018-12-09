@@ -1,0 +1,7 @@
+{
+    "name": "drupal/layouter",
+    "description": "Allows to choose one of predefined layouts which is applied to the content that you want to put into textarea fields.",
+    "type": "drupal-module",
+    "license": "GPL 2.0+",
+    "minimum-stability": "dev"
+}

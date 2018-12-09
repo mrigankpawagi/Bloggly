@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_sm
+label: 'Background Image: Small'
+effects:
+  ff73de83-24ba-4dbe-bd5f-56c9c045d59b:
+    uuid: ff73de83-24ba-4dbe-bd5f-56c9c045d59b
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 512

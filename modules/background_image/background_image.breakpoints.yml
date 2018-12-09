@@ -1,0 +1,28 @@
+background_image.sm:
+  label: Small
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+background_image.md:
+  label: Medium
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+background_image.lg:
+  label: Large
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+background_image.xl:
+  label: Extra Large
+  mediaQuery: 'all and (min-width: 1400px)'
+  weight: 4
+  multipliers:
+    - 1x
+    - 2x

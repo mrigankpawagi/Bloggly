@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_xl
+label: 'Background Image: Extra Large'
+effects:
+  38b252c6-889e-489e-8405-600638e78148:
+    uuid: 38b252c6-889e-489e-8405-600638e78148
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 2000
+      height: 1333

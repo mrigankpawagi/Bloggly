@@ -1,0 +1,57 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.background_image_lg
+    - image.style.background_image_lg_2x
+    - image.style.background_image_md
+    - image.style.background_image_md_2x
+    - image.style.background_image_sm
+    - image.style.background_image_sm_2x
+    - image.style.background_image_xl
+    - image.style.background_image_xl_2x
+id: background_image
+label: Background Image
+image_style_mappings:
+  -
+    breakpoint_id: background_image.xl
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_image_xl
+  -
+    breakpoint_id: background_image.xl
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: background_image_xl_2x
+  -
+    breakpoint_id: background_image.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_image_lg
+  -
+    breakpoint_id: background_image.lg
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: background_image_lg_2x
+  -
+    breakpoint_id: background_image.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_image_md
+  -
+    breakpoint_id: background_image.md
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: background_image_md_2x
+  -
+    breakpoint_id: background_image.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: background_image_sm
+  -
+    breakpoint_id: background_image.sm
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: background_image_sm_2x
+breakpoint_group: background_image
+fallback_image_style: background_image_sm

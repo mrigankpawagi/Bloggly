@@ -1,0 +1,5 @@
+background_image.add:
+  title: 'Add background image'
+  route_name: entity.background_image.add_form
+  appears_on:
+    - background_image.admin

@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_lg
+label: 'Background Image: Large'
+effects:
+  c8150fda-2495-4589-9b4a-93d3328d15d4:
+    uuid: c8150fda-2495-4589-9b4a-93d3328d15d4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 800

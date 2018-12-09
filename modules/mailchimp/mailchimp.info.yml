@@ -1,0 +1,13 @@
+name: Mailchimp
+type: module
+description: Mailchimp email service integration.
+package: Mailchimp
+# core: 8.x
+configure: mailchimp.admin
+
+
+# Information added by Drupal.org packaging script on 2018-11-29
+version: '8.x-1.8'
+core: '8.x'
+project: 'mailchimp'
+datestamp: 1543531087

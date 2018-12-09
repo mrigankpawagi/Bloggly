@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: background_image_md
+label: 'Background Image: Medium'
+effects:
+  df91f281-70f9-4238-847d-b6ef663d9521:
+    uuid: df91f281-70f9-4238-847d-b6ef663d9521
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 992
+      height: 661

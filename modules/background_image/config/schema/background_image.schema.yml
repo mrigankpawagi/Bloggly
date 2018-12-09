@@ -1,0 +1,54 @@
+background_image.settings.*:
+  type: background_image_settings
+  label: 'Internal use only, does not export.'
+
+background_image.settings:
+  type: config_object
+  mapping:
+    defaults:
+      type: background_image_settings
+      label: 'Default settings for background image entities.'
+    entities:
+      # Entity type
+      type: sequence
+      label: 'List of entities.'
+      sequence:
+        # Entity type bundle.
+        type: sequence
+        sequence:
+          # Properties
+          type: mapping
+          mapping:
+            enable:
+              type: boolean
+              label: 'Flag indicating whether entity bundle is enabled.'
+            embed:
+              type: boolean
+              label: 'Flag indicating whether entity bundle can be embedded.'
+            require:
+              type: boolean
+              label: 'Flag indicating whether a background image on the entity bundle is required.'
+            group:
+              type: string
+              label: 'The group in which the background image form will be embedded into (if it exists).'
+    retina_rules:
+      type: sequence
+      label: 'The CSS media query rules that are used to determine when to apply the "retina" or @2x version of the image.'
+      sequence:
+        type: string
+    css:
+      type: mapping
+      mapping:
+        base_class:
+          type: string
+          label: 'Base class'
+        retina_rules:
+          type: sequence
+          label: 'The CSS media query rules that are used to determine when to apply the "retina" or @2x version of the image.'
+          sequence:
+            type: string
+    image_style:
+      type: sequence
+      label: 'List of image styles'
+      sequence:
+        type: string

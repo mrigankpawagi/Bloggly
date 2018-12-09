@@ -1,0 +1,56 @@
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+.layouter-link-wrapper a:hover {
+  opacity: 0.85;
+}
+.layouter-form .form-radios {
+  overflow: hidden;
+}
+.layouter-form .layouter-radio-wrapper {
+  float: left;
+}
+.layouter-form .form-type-radio {
+  overflow: hidden;
+  float: left;
+  margin-right: 20px !important;
+}
+.layouter-form .form-type-radio input {
+  float: left;
+  height: 62px;
+}
+.layouter-form .form-type-radio label {
+  float: left !important;
+  display: block;
+  width: 60px !important;
+  height: 62px;
+  margin-left: 4px !important;
+  text-indent: -9999px;
+}
+.layouter-form .image_only label {
+  background: url(../images/image_only.png) no-repeat center;
+}
+.layouter-form .two_columns label {
+  background: url(../images/two_columns.png) no-repeat;
+}
+.layouter-form .two_columns_img_left_text_right label {
+  background: url(../images/two_columns_img_left_text_right.png) no-repeat;
+}
+.layouter-form .two_columns_img_right_text_left label {
+  background: url(../images/two_columns_img_right_text_left.png) no-repeat center;
+}
+.layouter-form .two_columns_text_img_left label {
+  background: url(../images/two_columns_text_img_left.png) no-repeat;
+}
+.layouter-form .big_img_text_below label {
+  background: url(../images/big_img_text_below.png) no-repeat;
+}
+.layouter-form .big_img_text_above label {
+  background: url(../images/big_img_text_above.png) no-repeat center;
+}
+.layouter-form .big_img_two_column_text_below label {
+  background: url(../images/big_img_two_column_text_below.png) no-repeat;
+}
+.layouter-form .big_img_two_column_text_above label {
+  background: url(../images/big_img_two_column_text_above.png) no-repeat;
+}

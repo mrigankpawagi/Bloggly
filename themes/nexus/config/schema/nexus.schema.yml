@@ -1,0 +1,5 @@
+# Required to validate default theme settings.
+
+nexus.settings:
+  type: theme_settings
+  label: 'Nexus settings'

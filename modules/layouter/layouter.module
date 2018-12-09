@@ -1,0 +1,345 @@
+<?php
+/**
+ * @file
+ * Contains hooks implementations, prerender callback and common functions.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Component\Serialization\Json;
+
+/**
+ * Implements hook_theme().
+ */
+function layouter_theme($existing, $type, $theme, $path) {
+  return [
+    'layouter_image_only' => [
+      'variables' => ['image' => NULL],
+      'template' => 'image_only',
+    ],
+    'layouter_two_columns' => [
+      'variables' => ['text' => NULL],
+      'template' => 'two_columns',
+    ],
+    'layouter_two_columns_img_left_text_right' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+        'caption' => NULL,
+      ],
+      'template' => 'two_columns_img_left_text_right',
+    ],
+    'layouter_two_columns_img_right_text_left' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+        'caption' => NULL,
+      ],
+      'template' => 'two_columns_img_right_text_left',
+    ],
+    'layouter_two_columns_text_img_left' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+      ],
+      'template' => 'two_columns_text_img_left',
+    ],
+    'layouter_big_img_text_below' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+      ],
+      'template' => 'big_img_text_below',
+    ],
+    'layouter_big_img_text_above' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+      ],
+      'template' => 'big_img_text_above',
+    ],
+    'layouter_big_img_two_column_text_below' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+      ],
+      'template' => 'big_img_two_column_text_below',
+    ],
+    'layouter_big_img_two_column_text_above' => [
+      'variables' => [
+        'text' => NULL,
+        'image' => NULL,
+      ],
+      'template' => 'big_img_two_column_text_above',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_layouter_templates_info().
+ */
+function layouter_layouter_templates_info() {
+  $templates = [
+    'image_only' => [
+      'title' => t('One image only'),
+      'fields' => [
+        'image' => [
+          'type' => 'image',
+          'title' => t('One image'),
+          'description' => t('Image will be align left.'),
+        ],
+      ],
+      'theme' => 'layouter_image_only',
+    ],
+    'two_columns' => [
+      'title' => t('Two columns of continuous text'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+          'title' => t('Two column text'),
+          'description' => t('Text will be divided on two columns.'),
+        ],
+      ],
+      'theme' => 'layouter_two_columns',
+    ],
+    'two_columns_img_left_text_right' => [
+      'title' => t('Two columns with an image (with an optional description) on the left side and a text on the right'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+          'description' => t('Text will be will be placed on the right column.'),
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+        'caption' => [
+          'type' => 'text',
+          'title' => t('Caption'),
+        ],
+      ],
+      'theme' => 'layouter_two_columns_img_left_text_right',
+    ],
+    'two_columns_img_right_text_left' => [
+      'title' => t('Two columns with an image (with an optional description) on the right side and a text on the left'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+        'caption' => [
+          'type' => 'text',
+          'title' => t('Caption'),
+        ],
+      ],
+      'theme' => 'layouter_two_columns_img_right_text_left',
+    ],
+    'two_columns_text_img_left' => [
+      'title' => t('Two columns of continuous text with an image on top left'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+      ],
+      'theme' => 'layouter_two_columns_text_img_left',
+    ],
+    'big_img_text_below' => [
+      'title' => t('Big image on top with a text below'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+      ],
+      'theme' => 'layouter_big_img_text_below',
+    ],
+    'big_img_text_above' => [
+      'title' => t('Big image at bottom with a text above'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+      ],
+      'theme' => 'layouter_big_img_text_above',
+    ],
+    'big_img_two_column_text_below' => [
+      'title' => t('Big image on top with a two columns of text below'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+      ],
+      'theme' => 'layouter_big_img_two_column_text_below',
+    ],
+    'big_img_two_column_text_above' => [
+      'title' => t('Big image at bottom with a two columns of text above'),
+      'fields' => [
+        'text' => [
+          'type' => 'text',
+        ],
+        'image' => [
+          'type' => 'image',
+        ],
+      ],
+      'theme' => 'layouter_big_img_two_column_text_above',
+    ],
+  ];
+
+  return $templates;
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function layouter_element_info_alter(array &$types) {
+  if (\Drupal::currentUser()->hasPermission('use layouter')) {
+    $types['text_format']['#pre_render'][] = 'layouter_text_format_pre_render';
+  }
+}
+
+/**
+ * Processes textarea element if it is allowed to enable Layouter.
+ *
+ * @param array $element
+ *   Form element to process.
+ *
+ * @return mixed
+ *   Element after process.
+ */
+function layouter_text_format_pre_render($element) {
+  // Check current content type is in module active types list.
+  $create_page_type = \Drupal::routeMatch()->getParameter('node_type');
+  $edit_page_type = \Drupal::routeMatch()->getParameter('node');
+  if (!is_null($create_page_type)) {
+    $current_type = $create_page_type->get('type');
+  }
+  elseif (!is_null($edit_page_type)) {
+    $current_type = $edit_page_type->bundle();
+  }
+  else {
+    return $element;
+  }
+
+  $active_content_types = layouter_active_content_types();
+  if (!in_array($current_type, $active_content_types)) {
+    return $element;
+  }
+
+  if (isset($element['value'])) {
+    $element['value'] = layouter_load_by_field($element['value']);
+  }
+  else {
+    $element = layouter_load_by_field($element);
+  }
+
+  return $element;
+}
+
+/**
+ * Enables Layouter for given textarea field.
+ *
+ * @param $field
+ * @return mixed
+ */
+function layouter_load_by_field($field) {
+  static $processed_ids = [];
+  $processed = !isset($field['#id']) || isset($processed_ids[$field['#id']]) || $field['#id'] == 'edit-log';
+  $not_accessible = isset($field['#access']) && !$field['#access'];
+  $disabled = isset($field['#attributes']['disabled']) && $field['#attributes']['disabled'] == 'disabled';
+  if ($processed || $not_accessible || $disabled) {
+    return $field;
+  }
+
+  $active_text_formats = layouter_active_text_formats();
+  $js_settings['window']['active_text_formats'] = $active_text_formats;
+  $js_settings['window']['textareas_id'][$field['#id']] = $field['#id'];
+  $field['#attached']['drupalSettings']['layouter'] = $js_settings;
+  $field['#attached']['library'][] = 'layouter/form';
+  $field['#attached']['library'][] = 'core/drupal.dialog.ajax';
+
+  if (!isset($processed_ids[$field['#id']])) {
+    $processed_ids[$field['#id']] = [];
+  }
+  $textarea_id = $field['#id'];
+  $class = 'layouter';
+  $link = [
+    '#type' => 'link',
+    '#url' => Url::fromRoute(
+      'layouter.form',
+      ['textarea_id' => $textarea_id]
+    ),
+    '#title' => t('Select the text template'),
+    '#attributes' => [
+      'id' => ['layouter-' . $textarea_id],
+      'class' => ['use-ajax', 'layouter-link', $textarea_id],
+      'data-dialog-type' => 'modal',
+      'data-dialog-options' => Json::encode([
+        'width' => '75%',
+        'title' => t('Layouter'),
+        'dialogClass' => 'no-close',
+      ]),
+      'title' => t('Click to select the text template with a simplified form of layout'),
+    ],
+  ];
+  $link = render($link);
+  $suffix = '<div class="filter-wrapper layouter-link-wrapper">'
+    . $link . '</div>';
+
+  // Remember extra information and reuse it during "Preview".
+  $processed_ids[$field['#id']]['suffix'] = $suffix;
+  $processed_ids[$field['#id']]['class'][] = $class;
+  $field['#suffix'] = (empty($field['#suffix'])) ? $suffix : $field['#suffix'] . $suffix;
+  $field['#attributes']['class'][] = $class;
+  return $field;
+}
+
+/**
+ * Gets the list of text formats for which Layouter is enabled.
+ *
+ * @return array
+ *   Array of allowed formats.
+ */
+function layouter_active_text_formats() {
+  $layouter_text_formats = \Drupal::config('layouter.settings')
+    ->get('text_formats');
+  $text_formats_enabled = [];
+  if ($layouter_text_formats) {
+    foreach ($layouter_text_formats as $text_format) {
+      if ($text_format) {
+        $text_formats_enabled[] = $text_format;
+      }
+    }
+  }
+  return $text_formats_enabled;
+}
+
+/**
+ * Gets the list of content types for which Layouter is enabled.
+ *
+ * @return array
+ *   Array of allowed types.
+ */
+function layouter_active_content_types() {
+  $layouter_content_types = \Drupal::config('layouter.settings')
+    ->get('content_types');
+  $content_types_enabled = [];
+  if ($layouter_content_types) {
+    foreach ($layouter_content_types as $content_type) {
+      if ($content_type) {
+        $content_types_enabled[] = $content_type;
+      }
+    }
+  }
+  return $content_types_enabled;
+}

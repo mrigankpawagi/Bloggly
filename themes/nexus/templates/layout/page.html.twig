@@ -1,0 +1,242 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the Header region.
+ * - page.main_navigation: Items for the Main Navigation region.
+ * - page.preface_first: Items for the Preface First region.
+ * - page.preface_second: Items for the Preface Second region.
+ * - page.preface_third: Items for the Preface Third region.
+ * - page.highlighted: Items for the Highlighted region.
+ * - sidebar_first: Items for the First Sidebar region.
+ * - content_top: Items for the Content Top region.
+ * - help: Items for the Help region.
+ * - content: Items for the Content region.
+ * - footer: Items for the Footer region.
+ * - footer_first: Items for the First Bottom region.
+ * - footer_second: Items for the Second Bottom region.
+ * - footer_third: Items for the Third Bottom region.
+ * - footer_fourth: Items for the Fourth Bottom region.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div id="page">
+  <header id="masthead" class="site-header container" role="banner">
+    <div class="row">
+      {% if page.header %}
+        <div id="logo" class="site-branding col-sm-6">
+          {{ page.header }}
+        </div>
+      {% endif %}
+      <div class="col-sm-6 mainmenu">
+        <div class="mobilenavi"></div>
+        <nav id="navigation" role="navigation">
+          <div id="main-menu">
+            {% if page.main_navigation %}
+                {{ page.main_navigation }}
+            {% endif %}
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+  {% if is_front %}
+    {{ attach_library('nexus/slider-js') }}
+    {% if slideshow_display %}
+      <div id="slidebox" class="flexslider">
+        <ul class="slides">
+          <li>
+            <img src="{{ slide1_image }}"/>
+            {% if slide1_head or slide1_desc %}
+              {% if slide1_head %}
+                {{ slide1_head|striptags }}
+              {% endif %}
+              <div class="flex-caption">
+                <h2>{{ slide1_head|striptags }}</h2>{{ slide1_desc|striptags }}
+                <a class="frmore" href="{{ slide1_url|striptags }}">{{ 'Read More'|t }}</a>
+              </div>
+            {% endif %}
+          </li>
+          <li>
+            <img src="{{ slide2_image }}"/>
+            {% if slide2_head or slide2_desc %}
+              {% if slide2_head %}
+                {{ slide2_head|striptags }}
+              {% endif %}
+              <div class="flex-caption">
+                <h2>{{ slide2_head|striptags }}</h2>{{ slide2_desc|striptags }}
+                <a class="frmore" href="{{ slide2_url|striptags }}">{{ 'Read More'|t }}</a>
+              </div>
+            {% endif %}
+          </li>
+          <li>
+            <img src="{{ slide3_image  }}"/>
+            {% if slide3_head or slide3_desc %}
+              {% if slide3_head %}
+                {{ slide3_head|striptags }}
+              {% endif %}
+              <div class="flex-caption">
+                <h2>{{ slide3_head|striptags }}</h2>{{ slide3_desc|striptags }}
+                <a class="frmore" href="{{ slide3_url|striptags }}">{{ 'Read More'|t }}</a>
+              </div>
+            {% endif %}
+          </li>
+        </ul><!-- /slides -->
+        <div class="doverlay"></div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if page.preface_first or page.preface_second or page.preface_third %}
+    <div id="preface-area">
+      <div class="container">
+        <div class="row">
+          {% if page.preface_first %}
+            <div class="{{ 'preface-block col-sm-' ~ preface_col }}">
+              {{ page.preface_first }}
+            </div>
+          {% endif %}
+          {% if page.preface_second %}
+            <div class="{{ 'preface-block col-sm-' ~ preface_col }}">
+              {{ page.preface_second }}
+            </div>
+          {% endif %}
+          {% if page.preface_third %}
+            <div class="{{ 'preface-block col-sm-' ~ preface_col }}">
+              {{ page.preface_third }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if page.highlighted %}
+    <div id="highlighted-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            {{ page.highlighted }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div id="main-content">
+    <div class="container">
+      <div class="row">
+        {% if page.sidebar_first %}
+          {% set primary_col = 8 %}
+        {% else %}
+          {% set primary_col = 12 %}
+        {% endif %}
+        <div id="primary" class="{{ 'content-area col-sm-' ~ primary_col }}">
+          <section id="content" role="main" class="clearfix">
+            {% if show_breadcrumbs %}
+              {% if breadcrumb %}
+                <div id="breadcrumbs">
+                  {{ breadcrumb }}
+                </div>
+              {% endif %}
+            {% endif %}
+            {{ messages }}
+            {% if page.content_top %}
+              <div id="content_top">
+                {{ page.content_top }}
+              </div>
+            {% endif %}
+            <div id="content-wrap">
+              {{ page.help }}
+              {{ page.content }}
+            </div>
+          </section>
+        </div>
+        {% if page.sidebar_first %}
+          <aside id="sidebar" class="col-sm-4" role="complementary">
+           {{ page.sidebar_first }}
+          </aside>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% if page.footer %}
+    <div id="footer-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            {{ page.footer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
+    <div id="bottom">
+      <div class="container">
+        <div class="row">
+          {% if page.footer_first %}
+            <div class="{{ 'footer-block col-sm-' ~ footer_col }}">
+              {{ page.footer_first }}
+            </div>
+          {% endif %}
+          {% if page.footer_second %}
+            <div class="{{ 'footer-block col-sm-' ~ footer_col }}">
+              {{ page.footer_second }}
+            </div>
+          {% endif %}
+          {% if page.footer_third %}
+            <div class="{{ 'footer-block col-sm-' ~ footer_col }}">
+              {{ page.footer_third }}
+            </div>
+          {% endif %}
+          {% if page.footer_fourth %}
+            <div class="{{ 'footer-block col-sm-' ~ footer_col }}">
+              {{ page.footer_fourth }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="fcred col-sm-12">
+          {{ "Copyright"|t }} &copy; {{ this_year }}, <a href="{{ front_page }}">{{ site_name }}</a>. {{ "Theme by"|t }} <a href="http://www.devsaran.com" target="_blank">Devsaran</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

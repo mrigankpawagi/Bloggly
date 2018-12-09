@@ -1,0 +1,5 @@
+css:
+  version: VERSION
+  css:
+    theme:
+      css/layouter_extension_example.css: {}

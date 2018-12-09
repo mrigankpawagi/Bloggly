@@ -1,0 +1,17 @@
+name: Layouter
+description: Allows to choose one of predefined layouts which is applied to the content that you want to put into textarea fields.
+package: User interface
+
+type: module
+# core: 8.x
+
+dependencies:
+  - filter
+  - image
+
+configure: layouter.settings
+# Information added by Drupal.org packaging script on 2016-08-02
+version: '8.x-1.0'
+core: '8.x'
+project: 'layouter'
+datestamp: 1470121447

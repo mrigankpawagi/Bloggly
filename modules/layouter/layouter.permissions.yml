@@ -1,0 +1,6 @@
+administer layouter:
+  title: 'Administer Layouter'
+  description: 'Allow to edit Layouter settings.'
+use layouter:
+  title: 'Use Layouter'
+  description: 'Allow to use Layouter for editing content.'

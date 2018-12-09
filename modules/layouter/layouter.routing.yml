@@ -1,0 +1,15 @@
+layouter.admin:
+  path: '/admin/config/content/layouter'
+  defaults:
+    _title: 'Layouter'
+    _description: 'Layouter settings.'
+    _form: '\Drupal\layouter\Form\SettingsForm'
+  requirements:
+    _permission: 'administer layouter'
+
+layouter.form:
+  path: '/layouter/form/{textarea_id}'
+  defaults:
+    _form: '\Drupal\layouter\Form\LayouterForm'
+  requirements:
+    _permission: 'use layouter'

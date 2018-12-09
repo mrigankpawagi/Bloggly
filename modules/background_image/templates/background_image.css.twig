@@ -1,0 +1,110 @@
+/* Background Image Styles (https://www.drupal.org/project/background_image). */
+
+{# Wrapper #}
+.{{ base_class }}-wrapper {
+  position: relative;
+}
+
+.{{ base_class }}-full-viewport .{{ base_class }}-wrapper::after {
+  content: '';
+  display: block;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+{# Image #}
+.{{ base_class }}-inner {
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  z-index: -1;
+}
+
+.{{ base_class }},
+.{{ base_class }}::before,
+.{{ base_class }}::after {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  bottom: -40px;
+  display: block;
+  left: -40px;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  transform: translate3d(0,0,0) translateZ(0);
+}
+
+{# Scroll Full Viewport Blur #}
+{% if settings.blur.type == 2 %}
+body:not(.{{ base_class }}-full-viewport) .{{ base_class }} {
+  filter: blur({{ settings.blur.radius }}px);
+}
+{% endif %}
+
+{# Persistent Blur #}
+{% if settings.blur.type == 3 %}
+.{{ base_class }} {
+  filter: blur({{ settings.blur.radius }}px);
+}
+{% endif %}
+
+.{{ base_class }}::before,
+.{{ base_class }}::after {
+  content: '';
+}
+
+.{{ base_class }}-overlay {
+  bottom: 0;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: translate3d(0,0,0) translateZ(0);
+}
+
+body:not(.{{ base_class }}-full-viewport) .{{ base_class }}-overlay {
+  display: none;
+}
+
+{# Text #}
+.{{ base_class }}-full-viewport .{{ base_class }}-text {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.{{ base_class }}-text {
+  width: 100%;
+}
+
+{# Preload Image #}
+.{{ background_image_class }}::before {
+  background-color: {{ settings.preload.background_color|default('transparent') }};
+  background-image: url("{{ preload_url }}");
+  {# Blur the preload image so it doesn't appear pixelated. Don't use
+     settings.blur.radius though as it might not be set. -#}
+  -webkit-filter: blur(40px);
+  filter: blur(40px);
+}
+
+{# Fallback Image #}
+.{{ background_image_class }}::after {
+  background-image: url("{{ fallback_url }}");
+}
+
+{# Media Queries #}
+{% for media in media_queries %}
+@media {{ media.query }} {
+  .{{ background_image_class }}::after {
+    background-image: url("{{ media.url }}");
+  }
+}
+{% endfor %}

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mailchimp Module.
+ */
+
+use Doctrine\Common\ClassLoader;
+
+/**
+ * Implements hook_requirements().
+ */
+function mailchimp_requirements($phase) {
+  $requirements = array(
+    'mailchimp' => array(
+      'title' => t('Mailchimp'),
+    ),
+  );
+
+  if ($phase == 'runtime') {
+    $config = \Drupal::config('mailchimp.settings');
+
+    // Check for Mailchimp library.
+    if (ClassLoader::classExists($config->get('api_classname'))) {
+      $requirements['mailchimp']['description'] = t('The Mailchimp MCAPI wrapper library is installed correctly.');
+      $requirements['mailchimp']['severity'] = REQUIREMENT_OK;
+    }
+    else {
+      $requirements['mailchimp']['description'] = t('The Mailchimp MCAPI wrapper library has not been installed correctly.');
+      $requirements['mailchimp']['severity'] = REQUIREMENT_ERROR;
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mailchimp_uninstall() {
+  $queue = \Drupal::queue(MAILCHIMP_QUEUE_CRON);
+  $queue->deleteQueue();
+}
+
+/**
+ * Update the class name in configuration.
+ */
+function mailchimp_update_8001(&$sandbox) {
+  $config = \Drupal::configFactory()->getEditable('mailchimp.settings');
+  $config->set('api_classname', 'Mailchimp\Mailchimp');
+  $config->save();
+}

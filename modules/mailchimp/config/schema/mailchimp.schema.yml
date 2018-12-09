@@ -1,0 +1,31 @@
+# Schema for the configuration files of the mailchimp module.
+
+mailchimp.settings:
+  type: config_object
+  label: 'Mailchimp settings'
+  mapping:
+    api_key:
+      type: string
+      label: 'Mailchimp API Integration Key'
+    cron:
+      type: boolean
+      label: 'Queue subscription operations for cron'
+    batch_limit:
+      type: integer
+      label: 'Batch limit'
+    api_classname:
+      type: string
+      label: 'Mailchimp API Class Name'
+    test_mode:
+      type: boolean
+      label: 'Whether mailchimp send is currently in test mode'
+    # Connected Sites configuration.
+    enable_connected:
+      type: boolean
+      label: 'Whether this site is connected to Mailchimp via Connected Sites.'
+    connected_id:
+      type: string
+      label: 'The ID of the Mailchimp connected site linked to this site.'
+    connected_paths:
+      type: string
+      label: 'The ID of the Mailchimp connected site linked to this site.'
