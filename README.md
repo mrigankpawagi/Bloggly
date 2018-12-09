@@ -1,6 +1,15 @@
 # Bloggly
 _A Profile to fulfil all your blogging needs._
 
+Bloggly was made for one of Drupal's GCI 2018 tasks - _Build a Drupal Distribution for blogging._
+
+### How I knew I could make this?
+For making Bloggly, I referred the [Drupal Documentation](https://www.drupal.org/docs/8/distributions) which provided all the required step-by-step information I needed.
+
+### Selection of Modules / Themes
+
+I did a bit of research on the Drupal Module And Theme directory, and searched modules by various keywords to decide which modules and themes I had to Include.
+
 ## Modules
 
 * metatag
