@@ -10,6 +10,14 @@ For making Bloggly, I referred the [Drupal Documentation](https://www.drupal.org
 
 I did a bit of research on the Drupal Module And Theme directory, and searched modules by various keywords to decide which modules and themes I had to Include.
 
+### The Development Process
+
+1. Created the basic `.profile`, `.info.yml` and `.install` files.
+2. Secondly, once I knew which modules I had to use, I downloaded the assets of the modules which were not included with the core, and put them in the `/modules` directory.
+3. The _Slick_ module gave a bit of problem since it needed some dependencies like _Slick_ and _bLazy_ which I put in the `/libraries` directory. 
+4. I downloaded the _Nexus_ theme and put it in the `/themes` directory. 
+5. At each step, I used _Pantheon_ for testing. I used `SFTP` to upload the profile after every change and then check the working.
+
 ## Modules
 
 * metatag
