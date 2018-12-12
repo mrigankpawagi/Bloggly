@@ -80,3 +80,15 @@ I did a bit of research on the Drupal Module And Theme directory, and searched m
 * Classy
 * Bartik
 * Seven
+
+# Usage
+
+1. Create a new website and _deploy_ Drupal 8. Do not **install** Drupal yet.
+2. Download the Bloggly Distribution and place all the files in the `/profiles/bloggly` folder of the Drupal root folder on the website.
+3. Now, open the `/config/install.php` page of your site to begin installing Drupal. 
+4. The Bloggly installation profile will be chosen by default if there is no other profile available. Else, choose Bloggly as the installation profile while installing Drupal.
+5. Enter the basic site configuration as followed. 
+
+_You are done!_
+
+**Note**: _Bloggly doesn't enable any themes, and so you would have to enable them yourself from `/admin/appearance`._
